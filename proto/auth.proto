@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "./auth/v1;authv1";
+
+option php_namespace = "GRPC\\Auth";
+option php_metadata_namespace = "GRPC\\Auth\\GPBMetadata";
+
+
+service Auth {
+  rpc AuthorizeByToken(AuthorizeByTokenRequest) returns (AuthorizeByTokenResponse);
+}
+
+message AuthorizeByTokenRequest {
+  string token = 1;
+}
+
+message AuthorizeByTokenResponse {
+  string id = 1;
+  string email = 2;
+  string name = 3;
+  string surname = 4;
+  string full_name = 5;
+  string avatar_url = 6;
+}

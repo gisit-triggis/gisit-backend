@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package routegenerator;
+
+option go_package = "./routegenerator/v1;routegeneratorv1";
+
+option php_namespace = "GRPC\\RouteGenerator";
+option php_metadata_namespace = "GRPC\\RouteGenerator\\GPBMetadata";
+
+service RouteGenerator {
+  rpc GenerateRoutes (GenerateRoutesRequest) returns (GenerateRoutesResponse);
+}
+
+message GenerateRoutesRequest {
+  string geojson_geometry = 1;
+  int32 num_routes = 2;
+  repeated double start_point_lon_lat = 3;
+  repeated double end_point_lon_lat = 4;
+}
+
+message RouteCost {
+  int32 route_id = 1;
+  double path_cost = 2;
+  double estimated_distance_km = 3;
+  double estimated_fuel_cost_units = 4;
+  double estimated_construction_cost_units = 5;
+  double total_estimated_cost_units = 6;
+}
+
+message GenerateRoutesResponse {
+  bytes visualization_png = 1;
+  string routes_geojson = 2;
+  repeated RouteCost route_costs = 3;
+  string status_message = 4;
+}
