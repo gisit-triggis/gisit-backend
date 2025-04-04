@@ -5,7 +5,7 @@ on:
       - main
 
 jobs:
-  laravel-tests:
+  tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,7 +30,7 @@ jobs:
         run: php artisan test
 
   deploy:
-    needs: laravel-tests
+    needs: tests
     runs-on: ubuntu-latest
 
     steps:
@@ -42,5 +42,5 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
           script: |
-            cd /var/www
+            cd /var/www/gisit-docker
             make pull-backend
