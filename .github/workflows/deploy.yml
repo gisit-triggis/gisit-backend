@@ -18,7 +18,7 @@ jobs:
           php-version: '8.4'
 
       - name: Install dependencies
-        run: composer install --no-progress --no-suggest --prefer-dist
+        run: composer install --no-progress --no-suggest --prefer-dist --ignore-platform-req=ext-rdkafka
 
       - name: Run Laravel tests
         run: php artisan test
