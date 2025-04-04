@@ -18,6 +18,7 @@
         "mateusjunges/laravel-kafka": "^2.5",
         "opcodesio/log-viewer": "^3.15",
         "predis/predis": "^2.3",
+        "spatie/laravel-prometheus": "^1.2",
         "spiral/roadrunner-cli": "^2.6.0",
         "spiral/roadrunner-grpc": "^3.5",
         "spiral/roadrunner-http": "^3.3.0"
