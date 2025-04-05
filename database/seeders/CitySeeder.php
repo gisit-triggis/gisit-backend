@@ -22,7 +22,7 @@ class CitySeeder extends Seeder
     {
         $geojson = file_get_contents(public_path('territory.geojson'));
         $data = json_decode($geojson, true);
-        log_message(LogLevel::DEBUG, $data);
+        log_message(LogLevel::DEBUG, json_encode($data));
         foreach ($data['features'] as $feature) {
             $properties = $feature['properties'];
             $name = $properties['NAME'] ?? null;
