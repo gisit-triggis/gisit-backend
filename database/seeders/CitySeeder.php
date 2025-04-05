@@ -8,6 +8,7 @@ use Clickbar\Magellan\Data\Geometries\MultiPolygon;
 use Clickbar\Magellan\Data\Geometries\Point;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Uid\Ulid;
 
 class CitySeeder extends Seeder
@@ -20,7 +21,7 @@ class CitySeeder extends Seeder
 
     private function seedRegionsFromGeoJson(): void
     {
-        $geojson = file_get_contents(storage_path('app/public/territory.geojson'));
+        $geojson = Storage::disk('public')->get('territory.geojson');
         $data = json_decode($geojson, true);
         log_message(LogLevel::DEBUG, json_encode($data));
         foreach ($data['features'] as $feature) {
@@ -52,7 +53,7 @@ class CitySeeder extends Seeder
 
     private function seedCitiesFromGeoJson(): void
     {
-        $geojson = file_get_contents(storage_path('app/public/cities.geojson'));
+        $geojson = Storage::disk('public')->get('cities.geojson');
         $data = json_decode($geojson, true);
 
         foreach ($data['features'] as $feature) {
