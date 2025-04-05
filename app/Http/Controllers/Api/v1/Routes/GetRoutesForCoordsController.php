@@ -56,6 +56,11 @@ class GetRoutesForCoordsController extends Controller
             $grpcRequest
         );
 
-        return fast_response(data: $response->getRoutesGeojson());
+        $data = [
+            'routes' => $response->getRoutesGeojson(),
+            'visualization' => $response->getVisualizationPng()
+        ];
+
+        return fast_response(data: $data);
     }
 }
