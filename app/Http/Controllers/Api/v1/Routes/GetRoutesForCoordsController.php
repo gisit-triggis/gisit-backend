@@ -58,7 +58,9 @@ class GetRoutesForCoordsController extends Controller
 
         $data = [
             'routes' => $response->getRoutesGeojson(),
-            'visualization' => $response->getVisualizationPng()
+            'costs' => $response->getRouteCosts(),
+            'visualization' => (string)$response->getVisualizationPng(),
+            'status' => $response->getStatusMessage()
         ];
 
         return fast_response(data: $data);
