@@ -41,7 +41,7 @@ class UpdateAuthenticatedUserGpsController extends Controller
         $grpcRequest = (new PositionUpdate())
             ->setLatitude($latitude)
             ->setLongitude($longitude)
-            ->setTimestamp($timestamp)
+            ->setTimestamp($timestamp->toRfc3339String())
             ->setSpeed(0)
             ->setStatus($status)
             ->setUserId($user->id);
