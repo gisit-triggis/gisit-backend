@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Grpc\Clients\PositionClient;
 use App\Grpc\Clients\RouteGeneratorClient;
 use App\Grpc\Controllers\AuthController;
 use App\Grpc\Controllers\HealthController;
 use GRPC\Auth\AuthInterface;
+use GRPC\Position\PositionServiceInterface;
 use GRPC\RouteGenerator\RouteGeneratorInterface;
 use Illuminate\Support\ServiceProvider;
 use GRPC\Health\HealthInterface;
@@ -24,6 +26,18 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(RouteGeneratorClient::class, static function ($app) {
             return new RouteGeneratorClient(
                 config('grpc.route_generator_server'),
+                [
+                    'grpc.max_receive_message_length' => 10 * 1024 * 1024,
+                    'grpc.max_send_message_length' => 10 * 1024 * 1024,
+                    'credentials' => null
+                ],
+            );
+        });
+
+        $this->app->bind(PositionServiceInterface::class, PositionClient::class);
+        $this->app->singleton(PositionClient::class, static function ($app) {
+            return new PositionClient(
+                config('grpc.position_server'),
                 [
                     'grpc.max_receive_message_length' => 10 * 1024 * 1024,
                     'grpc.max_send_message_length' => 10 * 1024 * 1024,

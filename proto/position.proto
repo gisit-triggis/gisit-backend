@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package position;
+
+option go_package = "./position/v1;positionv1";
+
+option php_namespace = "GRPC\\Position";
+option php_metadata_namespace = "GRPC\\Position\\GPBMetadata";
+
+
+service PositionService {
+  rpc StreamPositionUpdates(stream PositionUpdate) returns (PositionResponse);
+
+  rpc UpdatePosition(PositionUpdate) returns (PositionResponse);
+
+  rpc GetAllPositions(GetAllPositionsRequest) returns (GetAllPositionsResponse);
+}
+
+message PositionUpdate {
+  string user_id = 1;
+  double latitude = 2;
+  double longitude = 3;
+  double speed = 4;
+  string status = 5;
+  string timestamp = 6;
+}
+
+message PositionResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message GetAllPositionsRequest {
+  // Optional filter parameters could be added here
+}
+
+message GetAllPositionsResponse {
+  repeated PositionUpdate positions = 1;
+}
