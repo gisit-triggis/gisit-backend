@@ -33,8 +33,6 @@ class CitySeeder extends Seeder
             log_message(LogLevel::INFO, $name);
 
             $wkt = $this->convertCoordinatesToWkt($feature['geometry']['coordinates']);
-            $polygon = MultiPolygon::make($feature['geometry']['coordinates'], 3857);
-            log_message(LogLevel::INFO, $polygon);
             $fid = $properties['fid'];
             $ulid = strtolower(Ulid::generate());
 
