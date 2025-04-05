@@ -17,7 +17,7 @@ class SearchCityController extends Controller
         $perPage = $request['first'] ?? 15;
         $page =  $request['page'] ?? 1;
 
-        $cities = City::where('name', 'ILIKE', '%' . $request['query'] . '%')
+        $cities = City::where('title', 'ILIKE', '%' . $request['query'] . '%')
             ->paginate($perPage, page: $page);
 
         return fast_response(data: $cities->toArray());
