@@ -4,6 +4,9 @@ use App\Http\Controllers\Api\v1\Auth\LoginUserController;
 use App\Http\Controllers\Api\v1\Auth\LogoutUserController;
 use App\Http\Controllers\Api\v1\Auth\RegisterUserController;
 use App\Http\Controllers\Api\v1\City\SearchCityController;
+use App\Http\Controllers\Api\v1\Marks\CreateMarkController;
+use App\Http\Controllers\Api\v1\Marks\ListMarksController;
+use App\Http\Controllers\Api\v1\Marks\ListMyMarksController;
 use App\Http\Controllers\Api\v1\Routes\GetRoutesForCoordsController;
 use App\Http\Controllers\Api\v1\Storage\PutFileIntoStorageController;
 use App\Http\Controllers\Api\v1\User\GetAuthenticatedUserController;
@@ -24,8 +27,14 @@ Route::prefix('/v1')->group(function () {
         Route::patch('/gps', UpdateAuthenticatedUserGpsController::class);
         Route::get('/paths'); // TODO: Получение всех своих путей
 
+        Route::prefix('/marks')->group(function () {
+            Route::post('/create', CreateMarkController::class);
+            Route::get('/list', ListMarksController::class);
+            Route::get('/me', ListMyMarksController::class);
+        });
+
         Route::prefix('/routes')->group(function () {
-            Route::post('/get', GetRoutesForCoordsController::class); // TODO: Получение картинки визуализации
+            Route::post('/get', GetRoutesForCoordsController::class);
         });
 
         Route::post('/storage', PutFileIntoStorageController::class);

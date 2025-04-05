@@ -33,4 +33,9 @@ class AppDefaults
     {
         return config('app_rules.user_rules.user_surname_max_length');
     }
+
+    public static function markTypes(): array
+    {
+        return ['recommend','warning','danger'];
+    }
 }

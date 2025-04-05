@@ -57,7 +57,7 @@ class GetRoutesForCoordsController extends Controller
             $grpcRequest
         );
 
-        $pngBytes = $response->getVisualizationPng();
+        $pngBytes = base64_decode($response->getVisualizationPng());
 
         $fileName = 'visualizations/'. uuid_create() .'.png';
 

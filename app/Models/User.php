@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as AuthModel;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -37,5 +38,10 @@ class User extends AuthModel
     public function getFullNameAttribute(): string
     {
         return trim(($this->name ?? '') . ' ' . ($this->surname ?? ''));
+    }
+
+    public function marks(): HasMany
+    {
+        return $this->hasMany(Mark::class, 'user_id', 'id');
     }
 }
