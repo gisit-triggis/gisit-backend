@@ -46,10 +46,14 @@ class UpdateAuthenticatedUserGpsController extends Controller
             ->setStatus($status)
             ->setUserId($user->id);
 
-        $this->client->UpdatePosition(
+        $response = $this->client->UpdatePosition(
             new Context([]),
             $grpcRequest
         );
+
+        if(!$response->getSuccess()) {
+            throw new \RuntimeException('Unable to update position');
+        }
 
         app(\ClickHouseDB\Client::class)->insert('user_points', [[
             'user_id' => (int) $user->id,
