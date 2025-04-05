@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\v1\Auth\LogoutUserController;
 use App\Http\Controllers\Api\v1\Auth\RegisterUserController;
 use App\Http\Controllers\Api\v1\City\SearchCityController;
 use App\Http\Controllers\Api\v1\Marks\CreateMarkController;
+use App\Http\Controllers\Api\v1\Marks\DeleteMarkController;
 use App\Http\Controllers\Api\v1\Marks\ListMarksController;
 use App\Http\Controllers\Api\v1\Marks\ListMyMarksController;
 use App\Http\Controllers\Api\v1\Routes\GetRoutesForCoordsController;
@@ -32,6 +33,7 @@ Route::prefix('/v1')->group(function () {
             Route::post('/create', CreateMarkController::class);
             Route::get('/list', ListMarksController::class);
             Route::get('/me', ListMyMarksController::class);
+            Route::delete('/delete', DeleteMarkController::class);
         });
 
         Route::prefix('/routes')->group(function () {
