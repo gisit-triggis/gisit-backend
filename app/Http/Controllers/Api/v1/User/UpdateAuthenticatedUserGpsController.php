@@ -35,14 +35,14 @@ class UpdateAuthenticatedUserGpsController extends Controller
 
         $latitude = (float) $request['latitude'];
         $longitude = (float) $request['longitude'];
-        $timestamp = isset($request['timestamp']) ? Carbon::parse($request['timestamp']) : now();
+        $timestamp = isset($request['timestamp']) ? Carbon::parse($request['timestamp']) : now()->format('Y-m-d H:i:s');
 
         $grpcRequest = (new PositionUpdate())
             ->setLatitude($latitude)
             ->setLongitude($longitude)
             ->setTimestamp($timestamp)
             ->setSpeed(0)
-            ->setStatus('active')
+            ->setStatus("active")
             ->setUserId($user->id);
 
         $this->client->UpdatePosition(
