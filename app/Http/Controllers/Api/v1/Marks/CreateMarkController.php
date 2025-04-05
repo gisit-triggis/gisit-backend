@@ -15,7 +15,7 @@ class CreateMarkController extends Controller
     {
         $request = app(CreateMarkRequest::class)->validated();
 
-        $request['geometry'] = Point::make($request['longitude'], $request['latitude']);
+        $request['geometry'] = Point::make($request['longitude'], $request['latitude'], srid: 3857);
         $request['user_id'] = getUser()->id;
 
         $mark = Mark::create($request);
