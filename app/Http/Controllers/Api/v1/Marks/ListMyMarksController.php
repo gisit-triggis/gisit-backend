@@ -10,7 +10,7 @@ class ListMyMarksController extends Controller
 {
     protected function handle(): JsonResponse
     {
-        $marks = getUser()->marks;
+        $marks = getUser()->marks()->get()->toArray();
 
         return fast_response(data: $marks);
     }
