@@ -10,6 +10,7 @@ use Google\Protobuf\Internal\RepeatedField;
 use GRPC\RouteGenerator\GenerateRoutesRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Spiral\RoadRunner\GRPC\Context;
 
 class GetRoutesForCoordsController extends Controller
@@ -56,10 +57,16 @@ class GetRoutesForCoordsController extends Controller
             $grpcRequest
         );
 
+        $pngBytes = $response->getVisualizationPng();
+
+        $fileName = 'visualizations/'. uuid_create() .'.png';
+
+        Storage::disk('s3')->put($fileName, $pngBytes);
+
         $data = [
+            'image' => Storage::disk('s3')->url($fileName),
             'routes' => $response->getRoutesGeojson(),
             'costs' => $response->getRouteCosts(),
-            'visualization' => (string)$response->getVisualizationPng(),
             'status' => $response->getStatusMessage()
         ];
 
