@@ -14,7 +14,7 @@ class AuthController implements AuthInterface
 {
     public function AuthorizeByToken(GRPC\ContextInterface $ctx, AuthorizeByTokenRequest $in): AuthorizeByTokenResponse
     {
-        $token = PersonalAccessToken::where('token','=',$in->getToken())->firstOrFail();
+        $token = PersonalAccessToken::findToken($in->getToken());
 
         if ($token && $token->tokenable) {
             Auth::guard('sanctum')->setUser($token->tokenable);
