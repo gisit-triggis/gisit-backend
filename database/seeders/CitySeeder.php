@@ -20,7 +20,7 @@ class CitySeeder extends Seeder
 
     private function seedRegionsFromGeoJson(): void
     {
-        $geojson = file_get_contents(public_path('territory.geojson'));
+        $geojson = file_get_contents(storage_path('app/public/territory.geojson'));
         $data = json_decode($geojson, true);
         log_message(LogLevel::DEBUG, json_encode($data));
         foreach ($data['features'] as $feature) {
@@ -52,7 +52,7 @@ class CitySeeder extends Seeder
 
     private function seedCitiesFromGeoJson(): void
     {
-        $geojson = file_get_contents(public_path('cities.geojson'));
+        $geojson = file_get_contents(storage_path('app/public/cities.geojson'));
         $data = json_decode($geojson, true);
 
         foreach ($data['features'] as $feature) {
