@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\v1\Auth\LoginUserController;
 use App\Http\Controllers\Api\v1\Auth\LogoutUserController;
 use App\Http\Controllers\Api\v1\Auth\RegisterUserController;
+use App\Http\Controllers\Api\v1\City\SearchCityController;
 use App\Http\Controllers\Api\v1\Routes\GetRoutesForCoordsController;
 use App\Http\Controllers\Api\v1\Storage\PutFileIntoStorageController;
 use App\Http\Controllers\Api\v1\User\GetAuthenticatedUserController;
@@ -28,5 +29,8 @@ Route::prefix('/v1')->group(function () {
         });
 
         Route::post('/storage', PutFileIntoStorageController::class);
+        Route::prefix('/search')->group(function () {
+            Route::get('/city', SearchCityController::class);
+        });
     })->middleware(['auth:sanctum']);
 });

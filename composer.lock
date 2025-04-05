@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fd648c7ff42620c6dc0ae815e6ea1d8c",
+    "content-hash": "9cb24b786b57e7868a5d1f4e0a04dc0d",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -352,6 +352,86 @@
                 }
             ],
             "time": "2024-02-09T16:56:22+00:00"
+        },
+        {
+            "name": "clickbar/laravel-magellan",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/clickbar/laravel-magellan.git",
+                "reference": "6bb2bf4bacf95f6c8ac85d59d33cf9f2cf68ff01"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/clickbar/laravel-magellan/zipball/6bb2bf4bacf95f6c8ac85d59d33cf9f2cf68ff01",
+                "reference": "6bb2bf4bacf95f6c8ac85d59d33cf9f2cf68ff01",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^11.0|^12.0",
+                "illuminate/contracts": "^11.0|^12.0",
+                "illuminate/database": "^11.0|^12.0",
+                "illuminate/support": "^11.0|^12.0",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.14.0"
+            },
+            "require-dev": {
+                "larastan/larastan": "^3.1",
+                "laravel/pint": "1.21.0",
+                "nunomaduro/collision": "^v8.1",
+                "orchestra/testbench": "^9.0|^10.0",
+                "pestphp/pest": "^3.7",
+                "pestphp/pest-plugin-laravel": "^3.1",
+                "phpstan/extension-installer": "^1.4",
+                "phpstan/phpstan-deprecation-rules": "^2.0",
+                "phpstan/phpstan-phpunit": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Magellan": "Clickbar\\Magellan\\Facades\\Magellan"
+                    },
+                    "providers": [
+                        "Clickbar\\Magellan\\MagellanServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Clickbar\\Magellan\\": "src",
+                    "Clickbar\\Magellan\\Database\\Factories\\": "database/factories"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adrian Hawlitschek",
+                    "email": "ah@clickbar.dev",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Tobias Kröll",
+                    "email": "tk@clickbar.dev",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This package provides functionality for working with the postgis extension in Laravel.",
+            "homepage": "https://github.com/clickbar/laravel-magellan",
+            "keywords": [
+                "clickbar",
+                "laravel",
+                "magellan",
+                "postgis"
+            ],
+            "support": {
+                "issues": "https://github.com/clickbar/laravel-magellan/issues",
+                "source": "https://github.com/clickbar/laravel-magellan/tree/2.0.0"
+            },
+            "time": "2025-03-19T14:56:59+00:00"
         },
         {
             "name": "composer/semver",
