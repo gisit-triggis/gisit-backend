@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\v1\Marks\CreateMarkController;
 use App\Http\Controllers\Api\v1\Marks\ListMarksController;
 use App\Http\Controllers\Api\v1\Marks\ListMyMarksController;
 use App\Http\Controllers\Api\v1\Routes\GetRoutesForCoordsController;
+use App\Http\Controllers\Api\v1\Routes\ListPredefinedRoutesController;
 use App\Http\Controllers\Api\v1\Storage\PutFileIntoStorageController;
 use App\Http\Controllers\Api\v1\User\GetAuthenticatedUserController;
 use App\Http\Controllers\Api\v1\User\UpdateAuthenticatedUserController;
@@ -35,6 +36,7 @@ Route::prefix('/v1')->group(function () {
 
         Route::prefix('/routes')->group(function () {
             Route::post('/get', GetRoutesForCoordsController::class);
+            Route::get('/predefined', ListPredefinedRoutesController::class);
         });
 
         Route::post('/storage', PutFileIntoStorageController::class);
