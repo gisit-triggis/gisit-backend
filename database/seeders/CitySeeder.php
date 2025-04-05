@@ -6,6 +6,7 @@ use App\Models\City;
 use Clickbar\Magellan\Data\Geometries\Point;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Symfony\Component\Uid\Ulid;
 
 class CitySeeder extends Seeder
@@ -13,6 +14,7 @@ class CitySeeder extends Seeder
     public function run(): void
     {
         $geojsonData = file_get_contents(public_path('territory.geojson'));
+        $this->info(Str::limit($geojsonData, 20));
         $geojsonData = json_decode($geojsonData, true);
         foreach ($geojsonData['features'] as $feature) {
             $properties = $feature['properties'];
