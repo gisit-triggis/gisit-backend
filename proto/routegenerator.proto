@@ -28,7 +28,7 @@ message RouteCost {
 }
 
 message GenerateRoutesResponse {
-  bytes visualization_png = 1;
+  string visualization_png = 1;
   string routes_geojson = 2;
   repeated RouteCost route_costs = 3;
   string status_message = 4;

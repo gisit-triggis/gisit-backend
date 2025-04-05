@@ -15,7 +15,7 @@ use Google\Protobuf\Internal\GPBUtil;
 class GenerateRoutesResponse extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>bytes visualization_png = 1;</code>
+     * Generated from protobuf field <code>string visualization_png = 1;</code>
      */
     protected $visualization_png = '';
     /**
@@ -49,7 +49,7 @@ class GenerateRoutesResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>bytes visualization_png = 1;</code>
+     * Generated from protobuf field <code>string visualization_png = 1;</code>
      * @return string
      */
     public function getVisualizationPng()
@@ -58,13 +58,13 @@ class GenerateRoutesResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>bytes visualization_png = 1;</code>
+     * Generated from protobuf field <code>string visualization_png = 1;</code>
      * @param string $var
      * @return $this
      */
     public function setVisualizationPng($var)
     {
-        GPBUtil::checkString($var, False);
+        GPBUtil::checkString($var, True);
         $this->visualization_png = $var;
 
         return $this;
