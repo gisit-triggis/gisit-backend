@@ -12,7 +12,7 @@ class UpdateAuthenticatedUserRequest extends FormRequest
         return [
             'name' => 'nullable|string|min:'. AppDefaults::userNameMin() .'|max:' . AppDefaults::userNameMax(),
             'surname' => 'nullable|string|min:' . AppDefaults::userSurnameMin() . '|max:' . AppDefaults::userSurnameMax(),
-            'avatar_url' => 'nullable|string|url|starts_with:https://cdn.gisit-triggis-hackathon.ru/',
+            'avatar_url' => 'nullable|string|url|starts_with:https://s3.gisit-triggis-hackathon.ru/',
         ];
     }
 }
