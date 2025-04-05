@@ -85,7 +85,7 @@ class CollectUserPaths extends Command
                     'path_geojson' => $geojson,
                     'path_length' => 0.0, // можно позже рассчитать
                     'path_points' => array_map(function ($p) {
-                        return [(float) $p[1], (float) $p[0]]; // lat, lon
+                        return sprintf('(%F,%F)', (float) $p[1], (float) $p[0]); // lat, lon
                     }, $path['points']),
                 ]], ['user_id', 'start_time', 'end_time', 'path_geojson', 'path_length', 'path_points']);
 
