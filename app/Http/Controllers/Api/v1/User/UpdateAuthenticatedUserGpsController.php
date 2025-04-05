@@ -35,14 +35,15 @@ class UpdateAuthenticatedUserGpsController extends Controller
 
         $latitude = (float) $request['latitude'];
         $longitude = (float) $request['longitude'];
-        $timestamp = isset($request['timestamp']) ? Carbon::parse($request['timestamp']) : now()->format('Y-m-d H:i:s');
+        $timestamp = now()->format('Y-m-d H:i:s');
+        $status = "ACTIVE";
 
         $grpcRequest = (new PositionUpdate())
             ->setLatitude($latitude)
             ->setLongitude($longitude)
             ->setTimestamp($timestamp)
             ->setSpeed(0)
-            ->setStatus("active")
+            ->setStatus($status)
             ->setUserId($user->id);
 
         $this->client->UpdatePosition(
@@ -52,7 +53,7 @@ class UpdateAuthenticatedUserGpsController extends Controller
 
         app(\ClickHouseDB\Client::class)->insert('user_points', [[
             'user_id' => (int) $user->id,
-            'timestamp' => $timestamp->toDateTimeString(),
+            'timestamp' => $timestamp,
             'latitude' => $latitude,
             'longitude' => $longitude,
         ]], ['user_id', 'timestamp', 'latitude', 'longitude']);

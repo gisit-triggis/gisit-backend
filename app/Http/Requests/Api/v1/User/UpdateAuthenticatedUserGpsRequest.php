@@ -11,7 +11,6 @@ class UpdateAuthenticatedUserGpsRequest extends FormRequest
         return [
             'latitude' => ['required', 'numeric', 'between:-90,90'],
             'longitude' => ['required', 'numeric', 'between:-180,180'],
-            'timestamp' => ['nullable', 'date'],
         ];
     }
 }
