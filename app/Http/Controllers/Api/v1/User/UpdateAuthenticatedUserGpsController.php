@@ -35,7 +35,7 @@ class UpdateAuthenticatedUserGpsController extends Controller
 
         $latitude = (float) $request['latitude'];
         $longitude = (float) $request['longitude'];
-        $timestamp = now()->toDateTimeString();
+        $timestamp = now();
         $status = "ACTIVE";
 
         $grpcRequest = (new PositionUpdate())
