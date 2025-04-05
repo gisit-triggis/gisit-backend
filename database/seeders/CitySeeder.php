@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\City;
+use App\Support\enums\LogLevel;
 use Clickbar\Magellan\Data\Geometries\Point;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -14,7 +15,7 @@ class CitySeeder extends Seeder
     public function run(): void
     {
         $geojsonData = file_get_contents(public_path('territory.geojson'));
-        $this->info(Str::limit($geojsonData, 20));
+        log_message(LogLevel::INFO, Str::limit($geojsonData, 20));
         $geojsonData = json_decode($geojsonData, true);
         foreach ($geojsonData['features'] as $feature) {
             $properties = $feature['properties'];
