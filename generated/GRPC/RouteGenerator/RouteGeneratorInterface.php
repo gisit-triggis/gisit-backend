@@ -19,4 +19,13 @@ interface RouteGeneratorInterface extends GRPC\ServiceInterface
     * @throws GRPC\Exception\InvokeException
     */
     public function GenerateRoutes(GRPC\ContextInterface $ctx, GenerateRoutesRequest $in): GenerateRoutesResponse;
+
+    /**
+    * @param GRPC\ContextInterface $ctx
+    * @param AssistantRequest $in
+    * @return AssistantResponse
+    *
+    * @throws GRPC\Exception\InvokeException
+    */
+    public function AskAssistant(GRPC\ContextInterface $ctx, AssistantRequest $in): AssistantResponse;
 }

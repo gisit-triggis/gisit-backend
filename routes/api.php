@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\v1\AI\AskController;
 use App\Http\Controllers\Api\v1\Auth\LoginUserController;
 use App\Http\Controllers\Api\v1\Auth\LogoutUserController;
 use App\Http\Controllers\Api\v1\Auth\RegisterUserController;
@@ -44,6 +45,10 @@ Route::prefix('/v1')->group(function () {
         Route::post('/storage', PutFileIntoStorageController::class);
         Route::prefix('/search')->group(function () {
             Route::get('/city', SearchCityController::class);
+        });
+
+        Route::prefix('/ai')->group(function () {
+            Route::get('/ask', AskController::class);
         });
     })->middleware(['auth:sanctum']);
 });

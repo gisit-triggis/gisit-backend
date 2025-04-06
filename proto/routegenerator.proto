@@ -9,6 +9,7 @@ option php_metadata_namespace = "GRPC\\RouteGenerator\\GPBMetadata";
 
 service RouteGenerator {
   rpc GenerateRoutes (GenerateRoutesRequest) returns (GenerateRoutesResponse);
+  rpc AskAssistant (AssistantRequest) returns (AssistantResponse);
 }
 
 message GenerateRoutesRequest {
@@ -32,4 +33,16 @@ message GenerateRoutesResponse {
   string routes_geojson = 2;
   repeated RouteCost route_costs = 3;
   string status_message = 4;
+}
+
+message AssistantRequest {
+  string question = 1;
+  repeated double current_location_lon_lat = 2;
+  string route_id = 3;
+}
+
+message AssistantResponse {
+  string answer = 1;
+  repeated string recommended_actions = 2;
+  string warning_level = 3;
 }
